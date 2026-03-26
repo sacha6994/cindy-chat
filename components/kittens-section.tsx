@@ -143,16 +143,15 @@ export function KittensSection() {
                   <Button
                     className={`w-full rounded-full h-11 font-medium transition-all ${
                       kitten.status === "Disponible"
-                        ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm hover:shadow-md"
-                        : ""
+                        ? "bg-primary hover:bg-primary/90 text-white shadow-sm hover:shadow-md"
+                        : "bg-warm-200 text-warm-500 cursor-not-allowed"
                     }`}
-                    variant={kitten.status === "Disponible" ? "default" : "secondary"}
                     disabled={kitten.status === "Reserve"}
                     asChild={kitten.status === "Disponible"}
                   >
                     {kitten.status === "Disponible" ? (
                       <Link href="#contact">
-                        <Heart className="h-4 w-4 mr-2 fill-primary-foreground/30" />
+                        <Heart className="h-4 w-4 mr-2 fill-white/30" />
                         Je craque pour {kitten.name}
                       </Link>
                     ) : (

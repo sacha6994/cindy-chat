@@ -41,10 +41,14 @@ export function Header() {
             🐾
           </span>
           <div className="flex flex-col">
-            <span className="font-serif text-xl font-bold text-primary tracking-wide">
+            <span className={`font-serif text-xl font-bold tracking-wide transition-colors duration-500 ${
+              scrolled ? "text-primary" : "text-white"
+            }`}>
               Les Geants de Velours
             </span>
-            <span className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-medium">
+            <span className={`text-[10px] uppercase tracking-[0.3em] font-medium transition-colors duration-500 ${
+              scrolled ? "text-muted-foreground" : "text-white/60"
+            }`}>
               Elevage Maine Coon
             </span>
           </div>
@@ -61,10 +65,16 @@ export function Header() {
             >
               <Link
                 href={link.href}
-                className="relative px-4 py-2 text-sm font-medium text-foreground/70 hover:text-primary transition-colors group"
+                className={`relative px-4 py-2 text-sm font-medium transition-colors group ${
+                  scrolled
+                    ? "text-foreground/70 hover:text-primary"
+                    : "text-white/80 hover:text-white"
+                }`}
               >
                 {link.label}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary rounded-full transition-all duration-300 group-hover:w-2/3" />
+                <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 rounded-full transition-all duration-300 group-hover:w-2/3 ${
+                  scrolled ? "bg-primary" : "bg-white"
+                }`} />
               </Link>
             </motion.div>
           ))}
@@ -75,7 +85,11 @@ export function Header() {
           >
             <Button
               size="sm"
-              className="ml-4 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6"
+              className={`ml-4 rounded-full px-6 font-semibold transition-all duration-500 ${
+                scrolled
+                  ? "bg-primary hover:bg-primary/90 text-primary-foreground"
+                  : "bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-sm"
+              }`}
               asChild
             >
               <Link href="#contact">Adopter</Link>
@@ -87,7 +101,7 @@ export function Header() {
         <Button
           variant="ghost"
           size="icon"
-          className="lg:hidden"
+          className={`lg:hidden transition-colors ${scrolled ? "" : "text-white hover:bg-white/10"}`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
         >

@@ -5,10 +5,14 @@ import { KittensSection } from "@/components/kittens-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
+import { CuteCatCursor } from "@/components/cute-cat-cursor"
+import { FloatingCat } from "@/components/floating-cat"
 
 export default function Home() {
   return (
     <main className="overflow-x-hidden">
+      <CuteCatCursor />
+      <FloatingCat />
       <Header />
       <HeroSection />
       <AboutSection />
