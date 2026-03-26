@@ -4,7 +4,10 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    remotePatterns: [
+      { hostname: "images.unsplash.com" },
+      { hostname: "cdn.pixabay.com" },
+    ],
   },
 }
 
