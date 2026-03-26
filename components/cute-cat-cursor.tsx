@@ -39,21 +39,21 @@ export function CuteCatCursor() {
         {paws.map((paw) => (
           <motion.div
             key={paw.id}
-            initial={{ opacity: 1, scale: 0.3, y: 0 }}
-            animate={{ opacity: 0, scale: 1.2, y: -30 }}
+            initial={{ opacity: 1, scale: 0.5, y: 0 }}
+            animate={{ opacity: 0, scale: 1.8, y: -50 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 1.3, ease: "easeOut" }}
             onAnimationComplete={() =>
               setPaws((prev) => prev.filter((p) => p.id !== paw.id))
             }
             className="absolute"
             style={{
-              left: paw.x - 15,
-              top: paw.y - 15,
+              left: paw.x - 24,
+              top: paw.y - 24,
               rotate: `${paw.rotation}deg`,
             }}
           >
-            <span className="text-2xl select-none" role="img" aria-hidden="true">
+            <span className="text-5xl select-none drop-shadow-md" role="img" aria-hidden="true">
               🐾
             </span>
           </motion.div>
