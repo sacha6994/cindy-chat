@@ -38,7 +38,7 @@ const testimonials = [
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80",
     catName: "Freya",
     catImage: "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&q=80",
-    text: "Je ne connaissais pas le Maine Coon avant Freya. Aujourd'hui, je ne peux plus imaginer ma vie sans ses ronronnements. Un elevage serieux et passione.",
+    text: "Je ne connaissais pas le Maine Coon avant Freya. Aujourd'hui, je ne peux plus imaginer ma vie sans ses ronronnements. Un elevage serieux et passionne.",
     rating: 5,
   },
   {
@@ -58,25 +58,24 @@ export function TestimonialsSection() {
   )
 
   return (
-    <section id="temoignages" className="py-24 lg:py-32 bg-gradient-to-b from-cream via-warm-50 to-cream relative overflow-hidden">
-      {/* Decorative */}
-      <div className="absolute top-20 right-10 text-gold/10">
+    <section id="temoignages" className="py-16 sm:py-24 lg:py-32 bg-gradient-to-b from-cream via-warm-50 to-cream relative overflow-hidden">
+      {/* Decorative — hidden on mobile */}
+      <div className="absolute top-20 right-10 text-gold/10 hidden sm:block">
         <Quote className="h-64 w-64" />
       </div>
 
-      <div className="container mx-auto px-6 relative">
-        <MotionWrapper className="text-center mb-16">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-warm/10 text-rose-warm text-sm font-medium mb-6">
+      <div className="container mx-auto px-5 sm:px-6 relative">
+        <MotionWrapper className="text-center mb-10 sm:mb-16">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-warm/10 text-rose-warm text-sm font-medium mb-4 sm:mb-6">
             <Heart className="h-3.5 w-3.5 fill-rose-warm" />
             Ils nous font confiance
           </span>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">
             Des familles{" "}
             <span className="text-primary italic">comblees</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
             Le plus beau compliment ? Voir nos chatons heureux dans leur nouveau foyer.
-            Decouvrez les temoignages de ceux qui ont craque.
           </p>
         </MotionWrapper>
 
@@ -86,42 +85,42 @@ export function TestimonialsSection() {
             plugins={[autoplayPlugin.current]}
             className="w-full max-w-6xl mx-auto"
           >
-            <CarouselContent className="-ml-4">
+            <CarouselContent className="-ml-3 sm:-ml-4">
               {testimonials.map((t) => (
-                <CarouselItem key={t.name} className="pl-4 md:basis-1/2">
-                  <div className="bg-white rounded-3xl p-8 shadow-sm border border-warm-100 h-full flex flex-col hover:shadow-lg transition-shadow duration-300">
+                <CarouselItem key={t.name} className="pl-3 sm:pl-4 basis-full sm:basis-1/2">
+                  <div className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-sm border border-warm-100 h-full flex flex-col hover:shadow-lg transition-shadow duration-300">
                     {/* Stars */}
-                    <div className="flex gap-1 mb-4">
+                    <div className="flex gap-1 mb-3 sm:mb-4">
                       {[...Array(t.rating)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-gold text-gold" />
+                        <Star key={i} className="h-3.5 sm:h-4 w-3.5 sm:w-4 fill-gold text-gold" />
                       ))}
                     </div>
 
                     {/* Quote */}
-                    <p className="text-foreground/80 leading-relaxed mb-6 flex-1 italic">
+                    <p className="text-foreground/80 leading-relaxed mb-4 sm:mb-6 flex-1 italic text-sm sm:text-base">
                       &laquo; {t.text} &raquo;
                     </p>
 
                     {/* Author + Cat */}
-                    <div className="flex items-center gap-4 pt-6 border-t border-warm-100">
-                      <div className="relative w-12 h-12 rounded-full overflow-hidden ring-2 ring-warm-100">
-                        <Image src={t.avatar} alt={t.name} fill className="object-cover" />
+                    <div className="flex items-center gap-3 sm:gap-4 pt-4 sm:pt-6 border-t border-warm-100">
+                      <div className="relative w-10 sm:w-12 h-10 sm:h-12 rounded-full overflow-hidden ring-2 ring-warm-100 flex-shrink-0">
+                        <Image src={t.avatar} alt={t.name} fill sizes="48px" className="object-cover" />
                       </div>
-                      <div className="flex-1">
-                        <p className="font-semibold text-foreground text-sm">{t.name}</p>
-                        <p className="text-xs text-muted-foreground">{t.location} — avec {t.catName}</p>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-semibold text-foreground text-sm truncate">{t.name}</p>
+                        <p className="text-xs text-muted-foreground truncate">{t.location} — avec {t.catName}</p>
                       </div>
-                      <div className="relative w-14 h-14 rounded-xl overflow-hidden ring-2 ring-warm-100">
-                        <Image src={t.catImage} alt={t.catName} fill className="object-cover" />
+                      <div className="relative w-11 sm:w-14 h-11 sm:h-14 rounded-xl overflow-hidden ring-2 ring-warm-100 flex-shrink-0">
+                        <Image src={t.catImage} alt={t.catName} fill sizes="56px" className="object-cover" />
                       </div>
                     </div>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center gap-2 mt-8">
-              <CarouselPrevious className="static translate-y-0 rounded-full border-warm-200 hover:bg-primary hover:text-primary-foreground hover:border-primary" />
-              <CarouselNext className="static translate-y-0 rounded-full border-warm-200 hover:bg-primary hover:text-primary-foreground hover:border-primary" />
+            <div className="flex justify-center gap-2 mt-6 sm:mt-8">
+              <CarouselPrevious className="static translate-y-0 rounded-full border-warm-200 hover:bg-primary hover:text-primary-foreground hover:border-primary h-9 w-9 sm:h-10 sm:w-10" />
+              <CarouselNext className="static translate-y-0 rounded-full border-warm-200 hover:bg-primary hover:text-primary-foreground hover:border-primary h-9 w-9 sm:h-10 sm:w-10" />
             </div>
           </Carousel>
         </MotionWrapper>

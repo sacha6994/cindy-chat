@@ -7,12 +7,14 @@ import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 import { CuteCatCursor } from "@/components/cute-cat-cursor"
 import { FloatingCat } from "@/components/floating-cat"
+import { PwaInstall } from "@/components/pwa-install"
 
 export default function Home() {
   return (
     <main className="overflow-x-hidden">
       <CuteCatCursor />
       <FloatingCat />
+      <PwaInstall />
       <Header />
       <HeroSection />
       <AboutSection />

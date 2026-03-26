@@ -7,7 +7,7 @@ import Link from "next/link"
 
 export function HeroSection() {
   return (
-    <section id="accueil" className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="accueil" className="relative min-h-[100svh] flex items-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
@@ -23,48 +23,35 @@ export function HeroSection() {
             type="video/mp4"
           />
         </video>
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-warm-900/90 via-warm-900/70 to-warm-900/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-warm-900/60 via-transparent to-warm-900/30" />
+        <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-warm-900/95 via-warm-900/75 to-warm-900/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-warm-900/70 via-transparent to-warm-900/30" />
       </div>
 
-      {/* Floating particles effect */}
-      <div className="absolute inset-0 z-[1] overflow-hidden pointer-events-none">
+      {/* Floating particles — hidden on mobile for perf */}
+      <div className="absolute inset-0 z-[1] overflow-hidden pointer-events-none hidden sm:block">
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-2 h-2 rounded-full bg-gold/30"
-            initial={{
-              x: `${15 + i * 15}%`,
-              y: "110%",
-              opacity: 0
-            }}
-            animate={{
-              y: "-10%",
-              opacity: [0, 0.6, 0],
-            }}
-            transition={{
-              duration: 8 + i * 2,
-              repeat: Infinity,
-              delay: i * 1.5,
-              ease: "linear",
-            }}
+            initial={{ x: `${15 + i * 15}%`, y: "110%", opacity: 0 }}
+            animate={{ y: "-10%", opacity: [0, 0.6, 0] }}
+            transition={{ duration: 8 + i * 2, repeat: Infinity, delay: i * 1.5, ease: "linear" }}
           />
         ))}
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-6 relative z-10 pt-24">
+      <div className="container mx-auto px-5 sm:px-6 relative z-10 pt-20 pb-24 sm:pt-24 sm:pb-0">
         <div className="max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex items-center gap-3 mb-6"
+            className="mb-5 sm:mb-6"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/20 border border-gold/30 backdrop-blur-sm">
-              <Sparkles className="h-3.5 w-3.5 text-gold" />
-              <span className="text-sm font-medium text-gold">
+            <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-gold/20 border border-gold/30 backdrop-blur-sm">
+              <Sparkles className="h-3 sm:h-3.5 w-3 sm:w-3.5 text-gold" />
+              <span className="text-xs sm:text-sm font-medium text-gold">
                 Elevage familial depuis 2015
               </span>
             </span>
@@ -74,7 +61,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.5 }}
-            className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1]"
+            className="font-serif text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-5 sm:mb-6 leading-[1.1]"
           >
             La douceur d&apos;un{" "}
             <span className="text-gold italic">geant</span>
@@ -86,7 +73,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="text-lg md:text-xl text-white/80 mb-10 leading-relaxed max-w-2xl"
+            className="text-base sm:text-lg md:text-xl text-white/80 mb-8 sm:mb-10 leading-relaxed max-w-2xl"
           >
             Imaginez un compagnon majestueux au pelage soyeux, au regard tendre
             et au ronronnement apaisant. Nos Maine Coons d&apos;exception sont eleves
@@ -97,22 +84,22 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            className="flex flex-wrap gap-4"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4"
           >
             <Button
               size="lg"
-              className="bg-gold hover:bg-gold/90 text-warm-900 font-semibold rounded-full px-8 h-14 text-base shadow-lg shadow-gold/25 transition-all hover:shadow-xl hover:shadow-gold/30 hover:scale-[1.02]"
+              className="bg-gold hover:bg-gold/90 text-warm-900 font-semibold rounded-full px-6 sm:px-8 h-12 sm:h-14 text-sm sm:text-base shadow-lg shadow-gold/25 transition-all hover:shadow-xl hover:shadow-gold/30 active:scale-[0.98] w-full sm:w-auto"
               asChild
             >
               <Link href="#chatons">
-                <Heart className="h-5 w-5 mr-2 fill-warm-900/30" />
+                <Heart className="h-4 sm:h-5 w-4 sm:w-5 mr-2 fill-warm-900/30" />
                 Decouvrir nos chatons
               </Link>
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="border-white/60 text-white bg-white/15 hover:bg-white/25 hover:border-white/80 rounded-full px-8 h-14 text-base font-semibold backdrop-blur-sm transition-all hover:scale-[1.02] shadow-lg shadow-black/10"
+              className="border-white/60 text-white bg-white/15 hover:bg-white/25 hover:border-white/80 rounded-full px-6 sm:px-8 h-12 sm:h-14 text-sm sm:text-base font-semibold backdrop-blur-sm transition-all active:scale-[0.98] shadow-lg shadow-black/10 w-full sm:w-auto"
               asChild
             >
               <Link href="#elevage">Notre elevage</Link>
@@ -124,33 +111,30 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.2 }}
-            className="flex flex-wrap gap-8 mt-16"
+            className="flex flex-wrap gap-4 sm:gap-8 mt-10 sm:mt-16"
           >
             {[
               { icon: Award, label: "Elevage LOOF" },
               { icon: Heart, label: "Suivi veterinaire" },
               { icon: Sparkles, label: "Tests genetiques" },
             ].map(({ icon: Icon, label }) => (
-              <div
-                key={label}
-                className="flex items-center gap-2.5 text-white/60"
-              >
-                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-sm">
-                  <Icon className="h-4 w-4 text-gold" />
+              <div key={label} className="flex items-center gap-2 text-white/60">
+                <div className="w-7 sm:w-8 h-7 sm:h-8 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-sm">
+                  <Icon className="h-3.5 sm:h-4 w-3.5 sm:w-4 text-gold" />
                 </div>
-                <span className="text-sm font-medium">{label}</span>
+                <span className="text-xs sm:text-sm font-medium">{label}</span>
               </div>
             ))}
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — hidden on small mobiles */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 hidden sm:block"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}

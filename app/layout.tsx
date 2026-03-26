@@ -1,22 +1,35 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Playfair_Display, Lato } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const playfair = Playfair_Display({ 
+const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: '--font-serif'
 });
-const lato = Lato({ 
+const lato = Lato({
   subsets: ["latin"],
   weight: ['300', '400', '700'],
   variable: '--font-sans'
 });
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#8b6914',
+}
+
 export const metadata: Metadata = {
-  title: 'Les Géants de Velours | Élevage de Maine Coon',
-  description: 'Élevage familial de chats Maine Coon en France. Découvrez nos magnifiques chatons et adultes, élevés avec amour et passion.',
-  generator: 'v0.app',
+  title: 'Les Geants de Velours | Elevage de Maine Coon',
+  description: 'Elevage familial de chats Maine Coon en Bretagne. Decouvrez nos magnifiques chatons et adultes, eleves avec amour et passion.',
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'Geants de Velours',
+  },
   icons: {
     icon: [
       {

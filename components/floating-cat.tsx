@@ -65,7 +65,7 @@ export function FloatingCat() {
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: 120, opacity: 0 }}
           transition={{ type: "spring", damping: 20, stiffness: 200 }}
-          className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3"
+          className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-40 flex flex-col items-end gap-2 sm:gap-3 max-w-[calc(100vw-2rem)]"
         >
           {/* Speech bubble */}
           <AnimatePresence mode="wait">
@@ -76,7 +76,9 @@ export function FloatingCat() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
-                className="relative bg-white rounded-2xl rounded-br-sm shadow-xl border border-warm-100 px-5 py-4 max-w-[280px]"
+                className="relative bg-white rounded-2xl rounded-br-sm shadow-xl border border-warm-100 px-4 sm:px-5 py-3 sm:py-4 w-[260px] sm:max-w-[280px]"
+                onTouchStart={() => setIsPaused(true)}
+                onTouchEnd={() => setIsPaused(false)}
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
               >
@@ -85,12 +87,12 @@ export function FloatingCat() {
                     setDismissed(true)
                     setIsVisible(false)
                   }}
-                  className="absolute -top-2 -right-2 w-6 h-6 bg-warm-200 hover:bg-warm-300 rounded-full flex items-center justify-center transition-colors shadow-sm"
+                  className="absolute -top-2 -right-2 w-7 h-7 bg-warm-200 hover:bg-warm-300 rounded-full flex items-center justify-center transition-colors shadow-sm"
                   aria-label="Fermer"
                 >
-                  <X className="h-3 w-3 text-warm-700" />
+                  <X className="h-3.5 w-3.5 text-warm-700" />
                 </button>
-                <p className="text-sm text-foreground leading-relaxed">
+                <p className="text-xs sm:text-sm text-foreground leading-relaxed pr-2">
                   {catMessages[messageIndex]}
                 </p>
                 {/* Progress bar */}
@@ -103,8 +105,8 @@ export function FloatingCat() {
                     className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary/20 origin-left rounded-full"
                   />
                 )}
-                {/* Nav dots */}
-                <div className="flex items-center justify-between mt-3 pt-2 border-t border-warm-50">
+                {/* Nav */}
+                <div className="flex items-center justify-between mt-2 sm:mt-3 pt-2 border-t border-warm-50">
                   <div className="flex gap-1">
                     {[...Array(Math.min(5, catMessages.length))].map((_, i) => {
                       const groupIndex = Math.floor(messageIndex / 5)
@@ -121,7 +123,7 @@ export function FloatingCat() {
                   </div>
                   <button
                     onClick={() => setMessageIndex((prev) => (prev + 1) % catMessages.length)}
-                    className="text-xs text-primary hover:text-primary/80 font-medium transition-colors"
+                    className="text-xs text-primary hover:text-primary/80 font-medium transition-colors active:scale-95"
                   >
                     Suivant →
                   </button>
@@ -135,25 +137,23 @@ export function FloatingCat() {
             onClick={() => setShowBubble((prev) => !prev)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="relative w-16 h-16 bg-gradient-to-br from-primary to-warm-600 rounded-full shadow-lg flex items-center justify-center hover:shadow-xl transition-shadow group"
+            className="relative w-14 sm:w-16 h-14 sm:h-16 bg-gradient-to-br from-primary to-warm-600 rounded-full shadow-lg flex items-center justify-center hover:shadow-xl transition-shadow"
             aria-label="Chat mascotte — infos Maine Coon"
           >
             <motion.span
               animate={{ rotate: [0, -10, 10, -10, 0] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-              className="text-3xl select-none"
+              className="text-2xl sm:text-3xl select-none"
             >
               😺
             </motion.span>
-            {/* Pulse ring */}
             <span className="absolute inset-0 rounded-full bg-primary/30 animate-ping opacity-20" />
-            {/* Love heart */}
             <motion.div
               animate={{ y: [0, -8, 0], opacity: [0, 1, 0] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 4 }}
               className="absolute -top-2 -right-1"
             >
-              <Heart className="h-4 w-4 fill-rose-warm text-rose-warm" />
+              <Heart className="h-3.5 sm:h-4 w-3.5 sm:w-4 fill-rose-warm text-rose-warm" />
             </motion.div>
           </motion.button>
         </motion.div>

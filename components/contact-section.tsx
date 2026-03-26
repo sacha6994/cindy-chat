@@ -27,29 +27,28 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-24 lg:py-32 bg-cream relative overflow-hidden">
-      {/* Decorative */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/3 rounded-full blur-3xl pointer-events-none" />
+    <section id="contact" className="py-16 sm:py-24 lg:py-32 bg-cream relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-primary/3 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative">
-        <MotionWrapper className="text-center mb-16">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+      <div className="container mx-auto px-5 sm:px-6 relative">
+        <MotionWrapper className="text-center mb-10 sm:mb-16">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 sm:mb-6">
             <MessageCircle className="h-3.5 w-3.5" />
             Parlons de votre futur compagnon
           </span>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">
             Pret a{" "}
             <span className="text-primary italic">agrandir la famille</span> ?
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
             Que vous ayez une question, un coup de coeur ou simplement envie de
-            discuter chatons, nous sommes la. Chaque message est lu avec attention.
+            discuter chatons, nous sommes la.
           </p>
         </MotionWrapper>
 
-        <div className="grid lg:grid-cols-5 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-5 gap-8 sm:gap-12 max-w-6xl mx-auto">
           {/* Contact Info */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-4 sm:space-y-6">
             <MotionWrapper variant="slide-left">
               {[
                 {
@@ -71,49 +70,47 @@ export function ContactSection() {
                   href: undefined,
                 },
               ].map((item) => (
-                <motion.div
+                <div
                   key={item.title}
-                  whileHover={{ x: 4 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-warm-100 hover:border-warm-200 hover:shadow-sm transition-all"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-warm-100 transition-all"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/15 to-gold/15 flex items-center justify-center flex-shrink-0">
-                    <item.icon className="h-5 w-5 text-primary" />
+                  <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-primary/15 to-gold/15 flex items-center justify-center flex-shrink-0">
+                    <item.icon className="h-4 sm:h-5 w-4 sm:w-5 text-primary" />
                   </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground uppercase tracking-wider">{item.title}</p>
+                  <div className="min-w-0">
+                    <p className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wider">{item.title}</p>
                     {item.href ? (
-                      <a href={item.href} className="font-medium text-foreground hover:text-primary transition-colors">
+                      <a href={item.href} className="font-medium text-sm sm:text-base text-foreground hover:text-primary transition-colors truncate block">
                         {item.value}
                       </a>
                     ) : (
-                      <p className="font-medium text-foreground">{item.value}</p>
+                      <p className="font-medium text-sm sm:text-base text-foreground">{item.value}</p>
                     )}
                   </div>
-                </motion.div>
+                </div>
               ))}
             </MotionWrapper>
 
             <MotionWrapper variant="slide-left" delay={0.2}>
-              <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/8 to-gold/8 border border-warm-100">
-                <div className="flex items-center gap-2 mb-3">
+              <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/8 to-gold/8 border border-warm-100">
+                <div className="flex items-center gap-2 mb-2 sm:mb-3">
                   <Clock className="h-4 w-4 text-primary" />
                   <h4 className="font-semibold text-foreground text-sm">Visites sur rendez-vous</h4>
                 </div>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Nous vous accueillons les week-ends pour rencontrer nos chats
-                  dans les meilleures conditions. Prevoyez environ 1h pour la visite.
+                <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
+                  Nous vous accueillons les week-ends pour rencontrer nos chats.
+                  Prevoyez environ 1h pour la visite.
                 </p>
               </div>
             </MotionWrapper>
 
             <MotionWrapper variant="slide-left" delay={0.3}>
-              <div className="p-6 rounded-2xl bg-white border border-warm-100">
-                <div className="flex items-center gap-2 mb-3">
+              <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-white border border-warm-100">
+                <div className="flex items-center gap-2 mb-2 sm:mb-3">
                   <Heart className="h-4 w-4 text-rose-warm fill-rose-warm" />
                   <h4 className="font-semibold text-foreground text-sm">Processus d&apos;adoption</h4>
                 </div>
-                <ol className="text-muted-foreground text-sm space-y-2">
+                <ol className="text-muted-foreground text-xs sm:text-sm space-y-1.5 sm:space-y-2">
                   <li className="flex gap-2">
                     <span className="text-primary font-bold">1.</span>
                     Echangeons par message ou telephone
@@ -137,36 +134,36 @@ export function ContactSection() {
 
           {/* Contact Form */}
           <MotionWrapper variant="slide-right" className="lg:col-span-3">
-            <Card className="border-warm-100 shadow-lg rounded-3xl overflow-hidden">
-              <CardHeader className="bg-gradient-to-r from-primary/5 to-gold/5 border-b border-warm-100 pb-6">
-                <CardTitle className="font-serif text-2xl">
+            <Card className="border-warm-100 shadow-lg rounded-2xl sm:rounded-3xl overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-primary/5 to-gold/5 border-b border-warm-100 p-4 sm:p-6 pb-4 sm:pb-6">
+                <CardTitle className="font-serif text-xl sm:text-2xl">
                   Envoyez-nous un message
                 </CardTitle>
-                <p className="text-sm text-muted-foreground mt-1">
+                <p className="text-xs sm:text-sm text-muted-foreground mt-1">
                   Reponse garantie sous 24h
                 </p>
               </CardHeader>
-              <CardContent className="p-8">
+              <CardContent className="p-4 sm:p-8">
                 {submitted ? (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-12"
+                    className="text-center py-8 sm:py-12"
                   >
-                    <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
-                      <Heart className="h-8 w-8 text-emerald-600 fill-emerald-600" />
+                    <div className="w-14 sm:w-16 h-14 sm:h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
+                      <Heart className="h-7 sm:h-8 w-7 sm:w-8 text-emerald-600 fill-emerald-600" />
                     </div>
-                    <h3 className="font-serif text-2xl font-bold text-foreground mb-2">
+                    <h3 className="font-serif text-xl sm:text-2xl font-bold text-foreground mb-2">
                       Message envoye !
                     </h3>
-                    <p className="text-muted-foreground">
-                      Merci pour votre interet. Nous vous repondrons tres vite.
+                    <p className="text-muted-foreground text-sm">
+                      Merci ! Nous vous repondrons tres vite.
                     </p>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit}>
                     <FieldGroup>
-                      <div className="grid sm:grid-cols-2 gap-5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                         <Field>
                           <FieldLabel htmlFor="name">Votre nom</FieldLabel>
                           <Input
@@ -175,7 +172,7 @@ export function ContactSection() {
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             placeholder="Prenom Nom"
                             required
-                            className="rounded-xl h-12 border-warm-200 focus:border-primary"
+                            className="rounded-xl h-11 sm:h-12 border-warm-200 focus:border-primary text-base"
                           />
                         </Field>
                         <Field>
@@ -187,7 +184,7 @@ export function ContactSection() {
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             placeholder="votre@email.fr"
                             required
-                            className="rounded-xl h-12 border-warm-200 focus:border-primary"
+                            className="rounded-xl h-11 sm:h-12 border-warm-200 focus:border-primary text-base"
                           />
                         </Field>
                       </div>
@@ -199,7 +196,7 @@ export function ContactSection() {
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           placeholder="06 12 34 56 78"
-                          className="rounded-xl h-12 border-warm-200 focus:border-primary"
+                          className="rounded-xl h-11 sm:h-12 border-warm-200 focus:border-primary text-base"
                         />
                       </Field>
                       <Field>
@@ -209,15 +206,15 @@ export function ContactSection() {
                           value={formData.message}
                           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                           placeholder="Parlez-nous de vous, de votre foyer, du chaton qui vous fait craquer..."
-                          rows={5}
+                          rows={4}
                           required
-                          className="rounded-xl border-warm-200 focus:border-primary resize-none"
+                          className="rounded-xl border-warm-200 focus:border-primary resize-none text-base"
                         />
                       </Field>
                     </FieldGroup>
                     <Button
                       type="submit"
-                      className="w-full mt-8 rounded-full h-13 text-base font-medium bg-primary hover:bg-primary/90 shadow-sm hover:shadow-md transition-all"
+                      className="w-full mt-6 sm:mt-8 rounded-full h-12 sm:h-13 text-sm sm:text-base font-medium bg-primary hover:bg-primary/90 text-white shadow-sm hover:shadow-md active:scale-[0.98] transition-all"
                       size="lg"
                     >
                       <Send className="h-4 w-4 mr-2" />

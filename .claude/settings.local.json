@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(gh auth:*)",
-      "Bash(gh repo:*)"
+      "Bash(gh repo:*)",
+      "Bash(cp apple-icon.png icon-192.png)",
+      "Bash(cp apple-icon.png icon-512.png)"
     ]
   }
 }
